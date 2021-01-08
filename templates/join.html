@@ -55,28 +55,31 @@
       </div>
     </div>
     <div class="form-outer">
-      <form action="/join/" method="POST">
+      <form action="/join/" enctype='multipart/form-data' method="POST">
+          {% csrf_token %}
         <div class="page slide-page">
           <div class="title">Basic Info:</div>
           <div class="field">
             <div class="label">Name</div>
-            <input type="text" name="Name">
+            {{form.Name}}
           </div>
           <div class="field">
             <div class="label">Email</div>
-            <input type="text" name="Email">
+            {{form.Email}}
           </div>
           <div class="field">
             <div class="label" >Mobile</div>
-            <input type="number" name="Mobile">
+            {{form.Mobile}}
           </div>
+
           <div class="field">
             <div class="label">Gender</div>
-            <select name="Gender">
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
+            {{form.Gender}}
+            <!--<select name="Gender">-->
+            <!--  <option>Male</option>-->
+            <!--  <option>Female</option>-->
+            <!--  <option>Other</option>-->
+            <!--</select>-->
           </div>
           <div class="field">
             <button class="firstNext next">Next</button>
@@ -87,62 +90,80 @@
           <div class="title">More Details:</div>
           <div class="field">
             <div class="label">Choose Your Preferred Division</div>
-            <select id="division">
-              <option value="national">National</option>
-              <option value="state">State</option>
-              <option value="society">Society</option>
-              <option value="outreach">Outreach</option>
-              <option value="initiative">Initiative</option>
-            </select>
+            {{form.Division}}
+            <!--<select id="division">-->
+            <!--  <option value="national">National</option>-->
+            <!--  <option value="state">State</option>-->
+            <!--  <option value="society">Society</option>-->
+            <!--  <option value="outreach">Outreach</option>-->
+            <!--  <option value="initiative">Initiative</option>-->
+            <!--</select>-->
           </div>
-          <div class="field hidden" id="state">
+          <div class="field hidden" id="St">
             <div class="label">Choose Your Preferred State</div>
-            <select>
-              <option>Maharashtra</option>
-              <option>Odisha</option>
-              <option>Tamil Nadu</option>
-              <option>West Bengal</option>
-              <option>Karnataka</option>
-              <option>Delhi</option>
-            </select>
+            {{form.State}}
+            <!--<select>-->
+            <!--  <option>Maharashtra</option>-->
+            <!--  <option>Odisha</option>-->
+            <!--  <option>Tamil Nadu</option>-->
+            <!--  <option>West Bengal</option>-->
+            <!--  <option>Karnataka</option>-->
+            <!--  <option>Delhi</option>-->
+            <!--</select>-->
           </div>
-          <div class="field hidden" id="society">
+           <div class="field hidden" id="Ou">
+            <div class="label">Choose Your Preferred Outreach State</div>
+            {{form.Outreach}}
+            <!--<select>-->
+            <!--  <option>Maharashtra</option>-->
+            <!--  <option>Odisha</option>-->
+            <!--  <option>Tamil Nadu</option>-->
+            <!--  <option>West Bengal</option>-->
+            <!--  <option>Karnataka</option>-->
+            <!--  <option>Delhi</option>-->
+            <!--</select>-->
+          </div>
+          <div class="field hidden" id="So">
             <div class="label">Choose Your Preferred Society</div>
-            <select>
-              <option>Cathedral Road</option>
-              <option>Behala</option>
-              <option>Ruby</option>
-            </select>
+            {{form.Society}}
+            <!--<select>-->
+            <!--  <option>Cathedral Road</option>-->
+            <!--  <option>Behala</option>-->
+            <!--  <option>Ruby</option>-->
+            <!--</select>-->
           </div>
-          <div class="field hidden" id="initiative">
+          <div class="field hidden" id="I">
             <div class="label">Choose Your Preferred Initiative</div>
-            <select>
-              <option>Your Friend</option>
-              <option>E-School</option>
-              <option>E-commerce</option>
-            </select>
+            {{form.Initiative}}
+            <!--<select>-->
+            <!--  <option>Your Friend</option>-->
+            <!--  <option>E-School</option>-->
+            <!--  <option>E-commerce</option>-->
+            <!--</select>-->
           </div>
 
           <div class="field">
             <div class="label">City</div>
-            <input type="text">
+            <!--<input type="text">-->
+            {{form.City}}
           </div>
           <div class="field">
             <div class="label">Select Your Education</div>
-            <select id="edu">
-              <option value="school">School</option>
-              <option value="college">College</option>
-              <option value="graduate">Graduate</option>
-              <option value="post-graduate">Post-Graduate</option>
-            </select>
+            {{form.Education}}
+            <!--<select id="edu">-->
+            <!--  <option value="school">School</option>-->
+            <!--  <option value="college">College</option>-->
+            <!--  <option value="graduate">Graduate</option>-->
+            <!--  <option value="post-graduate">Post-Graduate</option>-->
+            <!--</select>-->
           </div>
           <div class="field">
             <div class="label">Institute Name</div>
-            <input type="text">
+            <!--<input type="text">-->{{form.InstituteName}}
           </div>
           <div class="field hidden" id="edu-level">
             <div class="label">School Standard/College year</div>
-            <input type="text">
+            <!--<input type="text">-->{{form.Std}}
           </div>
           <div class="field btns">
             <button class="prev-1 prev">Previous</button>
@@ -154,57 +175,64 @@
           <div class="title">Area of Interest:</div>
           <div class="field">
             <div class="label">Department</div>
-            <select id="department">
-              <option value="marketing">Marketing</option>
-              <option value="it">IT</option>
-              <option value="management">Management</option>
-              <option value="pub-rel">Public Relations</option>
-              <option value="finance">Finance</option>
-              <option value="hr">Human Resources</option>
-            </select>
+            <!--<select id="department">-->
+            <!--  <option value="marketing">Marketing</option>-->
+            <!--  <option value="it">IT</option>-->
+            <!--  <option value="management">Management</option>-->
+            <!--  <option value="pub-rel">Public Relations</option>-->
+            <!--  <option value="finance">Finance</option>-->
+            <!--  <option value="hr">Human Resources</option>-->
+            <!--</select>-->
+            {{form.Department}}
           </div>
-          <div class="field hidden" id="marketing">
+          <div class="field hidden" id="position">
             <div class="label">Available Positions:</div>
-            <select>
-              <option>Content Writing</option>
-              <option>Instagram Handler</option>
-            </select>
+            {{form.Position}}
+            <!--<select>-->
+            <!--  <option>Content Writing</option>-->
+            <!--  <option>Instagram Handler</option>-->
+            <!--</select>-->
           </div>
-          <div class="field hidden" id="it">
-            <div class="label">Available Positions</div>
-            <select>
-              <option>Web development</option>
-              <option>Video Editing</option>
-              <option>Graphic Designing</option>
-            </select>
-          </div>
-          <div class="field hidden" id="pub-rel">
-            <div class="label">Available Positions</div>
-            <select>
-              <option>Grievance Head</option>
-            </select>
-          </div>
-          <div class="field hidden" id="finance">
-            <div class="label">Available Positions</div>
-            <select>
-              <option>Sponcorship</option>
-            </select>
-          </div>
+          <!--<div class="field hidden" id="it">-->
+          <!--  <div class="label">Available Positions</div>-->
+          <!--  <select>-->
+          <!--    <option>Web development</option>-->
+          <!--    <option>Video Editing</option>-->
+          <!--    <option>Graphic Designing</option>-->
+          <!--  </select>-->
+          <!--</div>-->
+          <!--<div class="field hidden" id="pub-rel">-->
+          <!--  <div class="label">Available Positions</div>-->
+          <!--  <select>-->
+          <!--    <option>Grievance Head</option>-->
+          <!--  </select>-->
+          <!--</div>-->
+          <!--<div class="field hidden" id="finance">-->
+          <!--  <div class="label">Available Positions</div>-->
+          <!--  <select>-->
+          <!--    <option>Sponsorship</option>-->
+          <!--  </select>-->
+          <!--</div>-->
+          <!--
+
+        fields =['Department', 'Position']
+          -->
           <div class="field">
             <div class="label">Why do you want to join Youth India</div>
-            <input type="text">
+            <!--<input type="text">-->{{form.WhyJoin}}
           </div>
           <div class="field">
             <div class="label">Why do you think we should hire you?</div>
-            <input type="text">
+            <!--<input type="text">-->{{form.WhyHire}}
           </div>
           <div class="field">
             <div class="label">Select a Time Slot for interview</div>
-            <select>
-              <option>11am to 1pm</option>
-              <option>2pm to 4pm</option>
-              <option>5pm to 7pm</option>
-            </select>
+            {{form.Timeslot}}
+            <!--<select>-->
+            <!--  <option>11am to 1pm</option>-->
+            <!--  <option>2pm to 4pm</option>-->
+            <!--  <option>5pm to 7pm</option>-->
+            <!--</select>-->
           </div>
           <div class="field btns">
             <button class="prev-2 prev">Previous</button>
@@ -216,10 +244,10 @@
           <div class="title">Login Details:</div>
           <div class="field">
             <label>Upload your resume</label>
-
-            <form action="/action_page.php">
-              <input type="file" style="color:transparent; width:130px; height:28px; " />
-            </form>
+            {{form.Resume}}
+            <!--<form action="/action_page.php">-->
+            <!--  <input type="file" style="color:transparent; width:130px; height:28px; " />-->
+            <!--</form>-->
           </div>
           <div class="field">
             <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)"

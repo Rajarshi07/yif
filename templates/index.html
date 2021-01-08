@@ -36,7 +36,7 @@
 {% include 'nav.html' %}
   <!-- Masthead-->
   <section class="masterhead" style="
-        background: url('img/home/homepage_bg.jpeg');
+        background:url('{%static "img/home/homepage_bg.jpeg" %}');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -67,24 +67,24 @@
       We make a living from what we get, but we make a life from what we give
     </p>
     <div class="highlights">
-      <div class="your-friend" data-aos="flip-left">
+      <a class="your-friend" data-aos="flip-left" href="#" style="text-decoration: none; color: #fff;" target="_blank">
         <i class="fas fa-hands-helping fa-3x"></i>
         <h3>Your Friend</h3>
         <p>A platform where people of can evocate for help.</p>
-      </div>
-      <div class="e-school">
+      </a>
+      <a class="e-school" href="#" style="text-decoration: none; color: #fff;" target="_blank">
         <i class="fas fa-book-open fa-3x"></i>
         <h3>E-School</h3>
         <p>An e-school that will serve the purpose of distance learning</p>
-      </div>
-      <div class="e-commerce" data-aos="flip-right">
+      </a>
+      <a class="e-commerce" data-aos="flip-right"  href="https://karton.co.in" style="text-decoration: none; color: #fff;" target="_blank">
         <i class="fas fa-shopping-bag fa-3x"></i>
         <h3>E-Commerce</h3>
         <p>
           The e-commerce platform meant to promote the sale of home- made
           artisanal, utilitarian and consumable products.
         </p>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -127,17 +127,16 @@
 
   <!-- OUTREACH -->
   <section class="container-fluid outreach" style="
-        background-image: url(img/home/outreach_bg.jpg);
+        background-image: url('{%static "img/home/outreach_bg.jpg" %}');
         background-size: cover;
-        background-repeat: no-repeat;
-      ">
+        background-repeat: no-repeat;" >
     <div class="container">
       <div class="row">
         <div class="row">
           <div class="col-lg-6 col-sm-12">
             <div class="outreach2">
               <h1>OUR OUTREACH CAMPAIGN</h1>
-              <p>
+              <p><a  href="https://www.outreachyouthindiafoundation.com" style="text-decoration: none; color: #000000" target="_blank">
                 “Its not about saying the right things, its about doing the
                 right things at the right time.” With this ideology in mind
                 Youth Outreach programme is all set to organise a flood relief
@@ -149,7 +148,7 @@
                 contribution of those who extended their support. The aim is
                 to reach out to maximum number of people and provide relief in
                 the form of food, clothes or anything that they require so
-                that these affected people can start their lives afresh."
+                that these affected people can start their lives afresh."</a>
               </p>
             </div>
           </div>
@@ -237,17 +236,18 @@
           <div class="col-lg-4 col-sm-4 col-md-4">
             <div class="card text-center card-form">
               <div class="card-body">
-                <form>
+                <form method=POST action='/'>
+                    {%csrf_token%}
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" placeholder="Your Name" />
+                    <input type="text" class="form-control form-control-lg" name="name" maxlength="100" required="" id="id_name" placeholder="Your Name" />
                   </div>
 
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" placeholder=" Your Email" />
+                    <input type="email" name="email" maxlength="100" required="" id="id_email" class="form-control form-control-lg" placeholder=" Your Email" />
                   </div>
 
                   <div class="form-group">
-                    <textarea type="text" class="form-control form-control-lg" placeholder="Message"
+                    <textarea type="text" name="message" maxlength="500" required="" id="id_message" class="form-control form-control-lg" placeholder="Message"
                       rows="5"></textarea>
                   </div>
                   <button type="submit" value="Submit" class="btn btnContact btn-block btn-lg">
